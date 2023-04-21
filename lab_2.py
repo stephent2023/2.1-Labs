@@ -1,5 +1,4 @@
-import math
-
+### Lab 2
 print('''
 1. Age category
 2. Calculator
@@ -8,7 +7,7 @@ print('''
 ''')
 task = int(input("Please select a task number: "))
 
-###
+### 1. Age category
 if task == 1:
     age = int(input("Please enter your age: "))
     if age >= 18:
@@ -18,7 +17,7 @@ if task == 1:
     else:
         print("You are in Category C")
 
-###
+### 2. 2. Calculator
 elif task == 2:
     num1 = int(input("Please enter your first number:"))
     num2 = int(input("Please enter your second number: "))
@@ -36,7 +35,7 @@ elif task == 2:
     else:
         print("Please select a valid option.")
 
-###
+### 3. Mark finder
 elif task == 3:
     mark = int(input("What mark did you get? "))
     level = int(input("What level are you in? (1 or 2): "))
@@ -64,7 +63,7 @@ elif task == 3:
         else:
             ("Please input a mark from 0 to 100")
 
-###
+### 4. Pythagoras
 elif task == 4:
     print('''Pythagoras calculator
     1.	Find the length of A given B and C  
@@ -76,17 +75,18 @@ elif task == 4:
     if selection == 1:
         B = int(input("Please input size of side B: "))
         C = int(input("Please input size of side C: "))
-        print("Side A = "+ str(math.sqrt(C**2-B**2)))
+        print("Side A = ",(C**2-B**2)**0.5)
     elif selection == 2:
         A = int(input("Please input size of side A: "))
         C = int(input("Please input size of side C: "))
-        print("Side B = "+ str(math.sqrt(C**2-A**2)))
+        print("Side B = ",(C**2-A**2)**0.5)
     elif selection == 3:
         A = int(input("Please input size of side A: "))
         B = int(input("Please input size of side B: "))
-        print("Side B = "+ str(math.sqrt(A**2+B**2)))
+        print("Side B = "(A**2+B**2)**0.5)
     else:
         print("Invalid selection")
 
+###
 else:
     ("Invalid task selection")
