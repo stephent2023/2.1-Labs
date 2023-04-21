@@ -1,3 +1,4 @@
+### Lab 3
 print('''
 1. Squares
 2. Factorial calc
