@@ -1,13 +1,14 @@
 print('''
 1. Squares
-2. Factorial
-3. Investment calc
+2. Factorial calc
+3. Compound investment calc
 4. Number guess
 5. Vowel counter
 6. Mark average
 ''')
 task = int(input("Please select a task number: "))
 
+### 1. Squares below 2000
 if task == 1:
     square = 0
     num = 0
@@ -16,14 +17,16 @@ if task == 1:
         num=num+1
         square = num**2
 
+### 2. Factorial calc
 elif task == 2:
-    factorialnum = int(input("Please enter anumber to claculate the factorial of: "))
+    factorialnum = int(input("Please enter a number to calculate the factorial of: "))
     factorial = factorialnum
     while factorialnum>1:
-        factorialnum = factorialnum-1
-        factorial = factorial*factorialnum
-    print(factorial)
+        factorialnum -= 1
+        factorial *= factorialnum
+    print("Factorial =",factorial)
 
+### 3. Compound investment calc
 elif task == 3:
     investment = int(input("Please input value of initial investment: "))
     interestrate = int(input("Please intput the yearly interest rate: "))
@@ -32,16 +35,15 @@ elif task == 3:
     while investment < targetvalue:
         time=time+1
         investment = investment*(1+(interestrate/100))
-        #print(investment)
-    print("It will take "+str(time)+" to reach "+str(targetvalue))
+    print("It will take",time,"years to reach £",targetvalue)
 
+### 4. Number guess
 elif task == 4:
     lowerbound = 400
     upperbound = 1000
     numtry = 3
     success=False
     while (numtry != 0) and (success == False):
-        #print(numtry)
         guess = int(input("Please type a number between "+str(lowerbound)+" and "+str(upperbound)+": "))
         if 400 < guess < 1000:
             print("Congrats!!!")
@@ -50,6 +52,7 @@ elif task == 4:
             print("Wrong!!!")
             numtry = numtry - 1
 
+### 5. Vowel counter
 elif task == 5:
     word = input("Please enter a word: ")
     vowelnum = 0
@@ -58,6 +61,7 @@ elif task == 5:
             vowelnum = vowelnum+1
     print(vowelnum)
 
+### 6. Mark average
 elif task == 6:
     valid = False
     while valid == False:
@@ -84,11 +88,11 @@ elif task == 6:
     average = (english+maths+ict)/3
 
     if average >= 65:
-        print("Pass with an average of "+str(average))
+        print("Pass with an average of",average)
     else:
-        print("Fail with an average of "+str(average))
+        print("Fail with an average of",average)
 
-            
 
+###           
 else:
     print("Invalid task selection")
