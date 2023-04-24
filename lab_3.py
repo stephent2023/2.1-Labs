@@ -1,11 +1,12 @@
-### Lab 3
 print('''
-1. Squares
-2. Factorial calc
+1. WHILE Squares
+2. WHILE Factorial calc
 3. Compound investment calc
 4. Number guess
 5. Vowel counter
 6. Mark average
+7. FOR Squares
+8. FOR Factorial calc
 ''')
 task = int(input("Please select a task number: "))
 
@@ -14,9 +15,9 @@ if task == 1:
     square = 0
     num = 0
     while square<2000:
-        print(square)
         num=num+1
         square = num**2
+        print(square)
 
 ### 2. Factorial calc
 elif task == 2:
@@ -93,7 +94,24 @@ elif task == 6:
     else:
         print("Fail with an average of",average)
 
+### 7. Squares task with FOR
+elif task == 7:
+    for i in range (1,200):
+        print(i**2)
+        if i**2 > 2000:
+            break
 
-###           
+### 8 Factorial task with FOR
+elif task == 8:
+    factorialnum = int(input("Please enter a number to calculate the factorial of: "))
+    factorial = 1
+    if factorialnum > -1:
+        for i in range (1,factorialnum+1):
+            factorial *= i
+        print("The factorial is:",factorial)
+    else:
+        print("There is no factorial of negative numbers.")
+
+
 else:
     print("Invalid task selection")
