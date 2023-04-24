@@ -15,9 +15,9 @@ if task == 1:
     square = 0
     num = 0
     while square<2000:
+        print(square)
         num=num+1
         square = num**2
-        print(square)
 
 ### 2. Factorial calc
 elif task == 2:
@@ -97,9 +97,9 @@ elif task == 6:
 ### 7. Squares task with FOR
 elif task == 7:
     for i in range (1,200):
-        print(i**2)
         if i**2 > 2000:
             break
+        print(i**2)
 
 ### 8 Factorial task with FOR
 elif task == 8:
