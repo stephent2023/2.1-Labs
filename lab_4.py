@@ -3,7 +3,7 @@ import time
 
 print('''
 1. Ages list
-2. Variable count
+2. Vowel count
 3. Time calculator
 ''')
 task = int(input("Please select a task number: "))
@@ -31,7 +31,7 @@ if task == 1:
     ages.sort()
     print(ages)
 
-### 2. Variable count
+### 2. Vowel count
 elif task == 2:
     string = input("Please input a string: ")
     vowelcount = 0
