@@ -1,3 +1,6 @@
+import re
+import time
+
 print('''
 1. Ages list
 2. Variable count
@@ -39,89 +42,117 @@ elif task == 2:
 
 ### 3. Time calculator
 elif task == 3:
-    print("""Select a mode:
-    1-	Add 2 times   
-    2-	Find the difference between 2 times  
-    3-	Convert to Hours  
-    4-	Convert to Minutes  
-    5-	Convert Minutes to Time  
-    6-	Convert Hours to Time
-    7-	Exit  
-    """)
-    selection = int(input(": "))
+    format = re.compile('.{2}:.{2}:.{2}')
+    while True:
+        print("""
+=============== Select a mode: ===============
+1-	Add 2 times   
+2-	Find the difference between 2 times  
+3-	Convert to Hours  
+4-	Convert to Minutes  
+5-	Convert Minutes to Time  
+6-	Convert Hours to Time
+7-	Exit    
+==============================================
+        """)
+        selection = int(input(": "))
 
-    if selection == 1:
-        date1 = input("Please enter the first date (DD:HH:MM): ")
-        date2 = input("Please input the second date (DD:HH:MM): ")
-        date1split = date1.split(":")
-        date2split = date2.split(":")
-        newdate = [int(date1split[0])+int(date2split[0]),int(date1split[1])+int(date2split[1]),int(date1split[2])+int(date2split[2])]
-        if newdate[2]>59:
-            newdate[1]+=(newdate[2]//60)
-            newdate[2]=newdate[2]%60
-        if newdate[1]>23:
-            newdate[0]+=(newdate[1]//24)
-            newdate[1]=newdate[1]%24
-        print("The added date =",newdate[0],":",newdate[1],":",newdate[2])
+        if selection == 1:
+            date1 = input("Please enter the first date (DD:HH:MM): ")
+            date2 = input("Please input the second date (DD:HH:MM): ")
+            if (format.match(date1)) and (format.match(date2)):
+                date1split = date1.split(":")
+                date2split = date2.split(":")
+                newdate = [int(date1split[0])+int(date2split[0]),int(date1split[1])+int(date2split[1]),int(date1split[2])+int(date2split[2])]
+                if newdate[2]>59:
+                    newdate[1]+=(newdate[2]//60)
+                    newdate[2]=newdate[2]%60
+                if newdate[1]>23:
+                    newdate[0]+=(newdate[1]//24)
+                    newdate[1]=newdate[1]%24
+                print("The added date =",newdate[0],":",newdate[1],":",newdate[2])
+                time.sleep(3)
+            else:
+                print("Invalid format!!")
 
-    elif selection == 2:
-        date1 = input("Please enter the first date (DD:HH:MM): ")
-        date2 = input("Please input the second date (DD:HH:MM): ")
-        date1split = date1.split(":")
-        date2split = date2.split(":")
+        elif selection == 2:
+            date1 = input("Please enter the first date (DD:HH:MM): ")
+            date2 = input("Please input the second date (DD:HH:MM): ")
 
-        date1mins = (int(date1split[0])*1440)+(int(date1split[1])*60)+(int(date1split[2]))
-        date2mins = (int(date2split[0])*1440)+(int(date2split[1])*60)+(int(date2split[2]))
+            if (format.match(date1)) and (format.match(date2)):
+                date1split = date1.split(":")
+                date2split = date2.split(":")
 
-        minutes = int(abs(date1mins-date2mins))
-        print(minutes)
+                date1mins = (int(date1split[0])*1440)+(int(date1split[1])*60)+(int(date1split[2]))
+                date2mins = (int(date2split[0])*1440)+(int(date2split[1])*60)+(int(date2split[2]))
 
-        if minutes > 1439:
-            days = minutes//1440
-            minutes = minutes - (1440*(minutes//1440))
-        else:
-            days = 0
-        if minutes > 59:
-            hours = minutes//60
-            minutes = minutes - (60*(minutes//60))
-        else:
-            hours = 0
-        print("Difference = ",days,":",hours,":",minutes)
+                minutes = int(abs(date1mins-date2mins))
+                print(minutes)
+
+                if minutes > 1439:
+                    days = minutes//1440
+                    minutes = minutes - (1440*(minutes//1440))
+                else:
+                    days = 0
+                if minutes > 59:
+                    hours = minutes//60
+                    minutes = minutes - (60*(minutes//60))
+                else:
+                    hours = 0
+                print("Difference = ",days,":",hours,":",minutes)
+                time.sleep(3)
+            else:
+                print("Invalid format!!")
 
 
-    elif selection == 3:
-        date = input("Please input a date (DD:HH:MM): ")
-        datesplit = date.split(":")
-        hours = (int(datesplit[0])*24)+(int(datesplit[1]))+(int(datesplit[2])/60)
-        print(hours,"hours")
+        elif selection == 3:
+            date = input("Please input a date (DD:HH:MM): ")
+            if format.match(date):
+                datesplit = date.split(":")
+                hours = (int(datesplit[0])*24)+(int(datesplit[1]))+(int(datesplit[2])/60)
+                print(hours,"hours")
+                time.sleep(3)
+            else:
+                print("Invalid format")
 
-    elif selection == 4:
-        date = input("Please input a date (DD:HH:MM): ")
-        datesplit = date.split(":")
-        mins = (int(datesplit[0])*1440)+(int(datesplit[1])*60)+(int(datesplit[2]))
-        print(mins,"mins")
+        elif selection == 4:
+            date = input("Please input a date (DD:HH:MM): ")
+            if format.match(date):
+                datesplit = date.split(":")
+                mins = (int(datesplit[0])*1440)+(int(datesplit[1])*60)+(int(datesplit[2]))
+                print(mins,"mins")
+                time.sleep(3)
+            else:
+                print("Invalid format!!")
 
-    elif selection == 5:
-        minutes = int(input("Please input a number of minutes: "))
-        if minutes > 1439:
-            days = minutes//1440
-            minutes = minutes - (1440*(minutes//1440))
-        else:
-            days = 0
-        if minutes > 59:
-            hours = minutes//60
-            minutes = minutes - (60*(minutes//60))
-        else:
-            minutes = 0
-        print("This is",days,":",hours,":",minutes)
+        elif selection == 5:
+            minutes = int(input("Please input a number of minutes: "))
+            if minutes > 1439:
+                days = minutes//1440
+                minutes = minutes - (1440*(minutes//1440))
+            else:
+                days = 0
+            if minutes > 59:
+                hours = minutes//60
+                minutes = minutes - (60*(minutes//60))
+            else:
+                minutes = 0
+            print("This is",days,":",hours,":",minutes)
+            time.sleep(3)
 
-    elif selection == 6:
-        hours = int(input("Please input a number of hours: "))
-        if hours > 23:
-            days = hours//24
-            hours = hours - (24*(hours//24))
-        else:
-            days = 0
-        print("This is ",days,":",hours,": 00")
+        elif selection == 6:
+            hours = int(input("Please input a number of hours: "))
+            if hours > 23:
+                days = hours//24
+                hours = hours - (24*(hours//24))
+            else:
+                days = 0
+            print("This is ",days,":",hours,": 00")
+            time.sleep(3)
+
+        elif selection == 7:
+            print("Thankyou!!")
+            break
+
 else:
     print("Invalid task selection.")
