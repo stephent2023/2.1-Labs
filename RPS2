@@ -15,9 +15,8 @@ winsandlosses = [0,0]
 while True:
     userchoice = input("======================\nRock, paper, scissors!\n======================\n")
     play = playround(userchoice.lower())
-    print(play[0])
     winsandlosses[0] += play[1]
     winsandlosses[1] += play[2]
-    again = input(f"Wins: {winsandlosses[0]} Losses: {winsandlosses[1]}\nPlay again (y/n)?")
+    again = input(f"{play[0]}\nWins: {winsandlosses[0]} Losses: {winsandlosses[1]}\nPlay again (y/n)?")
     if again.lower()=="n":
         break
