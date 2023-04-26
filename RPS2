@@ -1,10 +1,6 @@
 import random
 def playround(choice):
-    winloss = [
-        "rock", "paper", "scissors",  #0: Computer selection
-        "paper", "scissors", "rock",  #1: What the computer loses to
-        "scissors", "rock", "paper"   #2: What the computer wins against
-    ]
+    winloss = ["rock", "paper", "scissors", "paper", "scissors", "rock", "scissors", "rock", "paper"]
     computerchoice = random.randint(0,2)
     print(winloss[computerchoice]) #Print the computers' selection
     if choice == winloss[computerchoice+3]:
@@ -15,16 +11,14 @@ def playround(choice):
         return "Draw!", 0, 0      #The user wins if they have the same as the computer (row 0)
     else:
         return "error", 0, 0
-wins = 0
-losses = 0
+winsandlosses = [0,0]
 while True:
     print("======================\nRock, paper, scissors!\n======================")
     userchoice = input("")
     play = playround(userchoice.lower())
     print(play[0])
-    wins += play[1]
-    losses += play[2]
-    print("Wins:",wins,"Losses:",losses)
-    again = input("Play again (y/n)? ")
+    winsandlosses[0] += play[1]
+    winsandlosses[1] += play[2]
+    again = input(f"Wins: {winsandlosses[0]} Losses: {winsandlosses[1]}\nPlay again (y/n)?")
     if again.lower()=="n":
         break
