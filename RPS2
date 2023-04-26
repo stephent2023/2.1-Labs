@@ -13,8 +13,7 @@ def playround(choice):
         return "error", 0, 0
 winsandlosses = [0,0]
 while True:
-    print("======================\nRock, paper, scissors!\n======================")
-    userchoice = input("")
+    userchoice = input("======================\nRock, paper, scissors!\n======================\n")
     play = playround(userchoice.lower())
     print(play[0])
     winsandlosses[0] += play[1]
