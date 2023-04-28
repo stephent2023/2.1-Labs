@@ -42,10 +42,8 @@ class PasswordChecker:
             else:
                 if (upperChars == 0):
                     return"Moderate\n"
-                if (lowerChars == 0):
-                    return"Moderate\n"
                 else:
-                    return"Moderate\n"
+                    return"Strong\n"
 
 def try_again():
     while True:
@@ -63,6 +61,7 @@ def try_again():
             print(" ")
 
 password_history = {}
+
 password = input("Please enter password: ")
 password1 = PasswordChecker(password)
 strength = password1.checkPassword()
