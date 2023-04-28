@@ -36,12 +36,12 @@ class PasswordChecker:
                         specialChars += 1
             if (upperChars != 0 and lowerChars != 0 and digits != 0 and specialChars != 0):
                 if (length >= 10):
-                    return"Strong\n"
+                    return"Very Strong\n"
                 else:
-                    return"Moderate\n"
+                    return"Strong\n"
             else:
                 if (upperChars == 0):
-                    return"Strong\n"
+                    return"Moderate\n"
                 if (lowerChars == 0):
                     return"Moderate\n"
 
