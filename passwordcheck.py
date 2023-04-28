@@ -44,6 +44,8 @@ class PasswordChecker:
                     return"Moderate\n"
                 if (lowerChars == 0):
                     return"Moderate\n"
+                else:
+                    return"Moderate\n"
 
 def try_again():
     while True:
